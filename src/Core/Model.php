@@ -47,7 +47,10 @@ class Model extends \Illuminate\Database\Eloquent\Model {
 	}
 
 	function getCdnUrlAttribute() {
-		return config('nova-media-library.cdn_url', '') . $this->path;
+		if( !empty(config('nova-media-library.cdn_url')) )
+			return config('nova-media-library.cdn_url', '') . $this->path;
+
+		return null;
 	}
 
 	function getPathAttribute() {
