@@ -26,7 +26,7 @@ class Model extends \Illuminate\Database\Eloquent\Model {
 
 	protected $fillable = ['id', 'title', 'created', 'type', 'folder', 'name', 'private', 'lp', 'options'];
 
-	protected $appends = ['url', 'path'];
+	protected $appends = ['cdn_url', 'path', 'url'];
 
 	protected $casts = [
 		'created' => 'datetime',
@@ -44,6 +44,10 @@ class Model extends \Illuminate\Database\Eloquent\Model {
 			return route('nml-private-file', [ 'id' => $this->id, 'img_size' => request('img_size') ]);
 
 		return null;
+	}
+
+	function getCdnUrlAttribute() {
+		return config('nova-media-library.cdn_url', '') . $this->path;
 	}
 
 	function getPathAttribute() {

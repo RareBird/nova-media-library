@@ -19,6 +19,8 @@ return [
 
 	'url' => 's3' == env('FILESYSTEM_DRIVER') ? env('AWS_URL', '') : env('APP_URL', '') . '/storage',
 
+	'cdn_url' => env('CDN_URL'),
+
 	/**
 	 * Store files `together` or in separate `folders`
 	 *

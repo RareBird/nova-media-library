@@ -68,6 +68,15 @@
         </div>
       </div>
 
+      <div class="flex border-b border-40" v-if="$parent.item.cdn_url">
+        <div class="w-1/4 py-4 font-bold text-80">{{ __('CDN Url') }}</div>
+        <div class="w-3/4 py-4">
+          <a class="text-primary font-bold no-underline" :href="$parent.item.cdn_url" target="_blank">{{ __('Open') }}</a>
+          <button type="button" class="text-80 font-bold no-underline float-right"
+                  v-copy="$parent.item.cdn_url" v-copy:callback="onCopy">{{ __('Copy') }}</button>
+        </div>
+      </div>
+
       <div class="flex mt-6">
         <button type="button" class="btn-default btn-primary cursor-pointer mr-6 shadow-md"
                 @click="update">
